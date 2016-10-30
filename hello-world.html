@@ -2,46 +2,14 @@
 <html>
 
   <head>
-<!--  	
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.6/fabric.min.js"></script>
--->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.5.0/fabric.js"></script>
+    <script src="script.js"></script>
   </head>
   <body>
 <script>
 
-window.onload = function()
-{
-    var canvas = new fabric.Canvas('c');
-    fabric.Image.fromURL('./googlelogo_color_272x92dp.png', function(img) {
-      img.set({left: 20, top: 20});
-      canvas.add(img);
-    });
-    fabric.Image.fromURL('./googlelogo_color_272x92dp.png', function(img) {
-      img.set({left: 40, top: 40});
-      canvas.add(img);
-    });
-
-    // create a rectangle object
-    var rect = new fabric.Rect({
-      left: 100,
-      top: 100,
-      fill: 'red',
-      width: 20,
-      height: 20
-    });
-    
-    // "add" rectangle onto canvas
-    canvas.add(rect);
-    
-    
-};
 </script>
-    <h1>Hello Plunker!</h1>
-  <canvas id="c" width="300" height="300" style="border:1px solid;"></canvas>
-<!--
-  <img src="./googlelogo_color_272x92dp.png" id="my-image">  </body>
--->
+  <h1>Hello Plunker!</h1>
+  <canvas id="c" width="800" height="800" ></canvas>
 </html>
