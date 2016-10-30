@@ -1,62 +1,47 @@
 <!DOCTYPE html>
-<!-- HTML5 Hello world by kirupa - http://www.kirupa.com/html5/getting_your_feet_wet_html5_pg1.htm -->
-<html lang="en-us">
+<html>
 
-<head>
-<meta charset="utf-8">
-<title>Hello...</title>
-<style type="text/css">
-#mainContent {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: xx-large;
-	font-weight: bold;
-	background-color: #E3F0FB;
-	border-radius: 4px;
-	padding: 10px;
-	text-align: center;
-}
-.buttonStyle {
-	border-radius: 4px;
-	border: thin solid #F0E020;
-	padding: 5px;
-	background-color: #F8F094;
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	font-weight: bold;
-	color: #663300;
-	width: 75px;
-}
+  <head>
+<!--  	
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.6/fabric.min.js"></script>
+-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.5.0/fabric.js"></script>
+  </head>
+  <body>
+<script>
 
-.buttonStyle:hover {
-	border: thin solid #FFCC00;
-	background-color: #FCF9D6;
-	color: #996633;
-	cursor: pointer;
-}
-.buttonStyle:active {
-	border: thin solid #99CC00;
-	background-color: #F5FFD2;
-	color: #669900;
-	cursor: pointer;
-}
+window.onload = function()
+{
+    var canvas = new fabric.Canvas('c');
+    fabric.Image.fromURL('./googlelogo_color_272x92dp.png', function(img) {
+      img.set({left: 20, top: 20});
+      canvas.add(img);
+    });
+    fabric.Image.fromURL('./googlelogo_color_272x92dp.png', function(img) {
+      img.set({left: 40, top: 40});
+      canvas.add(img);
+    });
 
-</style>
-</head>
-
-<body>
-<div id="mainContent">
-<p id="helloText">?</p>
-<button id="clickButton" class="buttonStyle">click me</button>
-</div>
-<script> 
-var myButton = document.getElementById("clickButton");
-var myText = document.getElementById("helloText");
-
-myButton.addEventListener('click', doSomething, false)
-
-function doSomething() {
-	myText.textContent = "hello, world!";
-}
+    // create a rectangle object
+    var rect = new fabric.Rect({
+      left: 100,
+      top: 100,
+      fill: 'red',
+      width: 20,
+      height: 20
+    });
+    
+    // "add" rectangle onto canvas
+    canvas.add(rect);
+    
+    
+};
 </script>
-
-</body>
+    <h1>Hello Plunker!</h1>
+  <canvas id="c" width="300" height="300" style="border:1px solid;"></canvas>
+<!--
+  <img src="./googlelogo_color_272x92dp.png" id="my-image">  </body>
+-->
 </html>
