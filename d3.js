@@ -17,21 +17,42 @@ window.onload = function()
                     return "translate(" + [ d.x,d.y ] + "),rotate("+d.r+",160, 160),scale("+d.scale+","+d.scale+")";
                 }) 
             });    
-
-         dgrop = d3.select(id).append("g")
-         .data([ {"x":20, "y":20, "r":1 , "scale":1} ])
-         .attr("x",0)
-         .attr("y",0)
-         .attr("transform","translate(0,0)")
-         .append('image')
-         .attr("x",0)
-         .attr("y",0)
-         .attr("width",300)
-         .attr("height",300)
-         .attr("xlink:href","googlelogo_color_272x92dp.png")
-         .call(drag);   
-
     
+             dgrop = d3.select(id).append("g")
+             .data([ {"x":20, "y":20, "r":1 , "scale":1} ])
+             .attr("x",0)
+             .attr("y",0)
+             .attr("transform","translate(0,0)")
+             .append('image')
+             .attr("x",0)
+             .attr("y",0)
+             .attr("width",300)
+             .attr("height",300)
+             .attr("xlink:href","googlelogo_color_272x92dp.png")
+             .call(drag);   
+             
+            // ズーム操作のコンストラクタを作成
+            var zoom = d3.behavior.zoom() ;
+            
+            // ズーム操作に対応するイベントリスナーを指定する
+            zoom.on( "zoom", function() {
+            	// イベントオブジェクト
+            	var event = d3.event ;
+            
+            	// スケール (現在の倍率)
+            	var scale = event.scale ;
+            
+            	// トランスレート (X方向、Y方向への移動距離)
+            	var tx = event.translate[0] ;
+            	var ty = event.translate[1] ;
+                // div要素に対して、call()メソッドでズーム操作を適用
+//                d3.select(id).call( zoom ) ;
+            	// transformのtranslateX、translateY、scaleの3つをそれぞれ更新する
+            	d3.select(this).style("transform", "translateX( " + tx + "px ) translateY( " + ty + "px ) scale( " + scale + " )" ) ;
+
+            } ) ;
+            d3.select(id).call( zoom ) ;            
+        
             // //回転
             // $("#wheel").bind("click",function(){
             //     dgrop.attr("transform", function(d,i){
